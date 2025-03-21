@@ -5,6 +5,7 @@ import (
 
 	"github.com/dop251/goja"
 	"github.com/jeremiasbots/sakura/modules/ev3"
+	"github.com/jeremiasbots/sakura/modules/http"
 	"github.com/jeremiasbots/sakura/vm"
 )
 
@@ -19,6 +20,10 @@ func Require(call goja.FunctionCall, rt *goja.Runtime) goja.Value {
 
 	if value == "sakura:ev3" {
 		return rt.ToValue(ev3.EV3Object)
+	}
+
+	if value == "sakura:http" {
+		return rt.ToValue(http.HTTPObject)
 	}
 
 	file, err := os.ReadFile(value)
